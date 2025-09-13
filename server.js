@@ -316,12 +316,8 @@ app.get('/products', async (req, res) => {
 app.post('/products', upload.single('image'), async (req, res) => {
   try {
     const { name, description, price, category } = req.body;
-    const allowedCategories = ['shop', 'passport', 'id-card'];
     if (!name || !category || !price || !req.file) {
       return res.status(400).json({ error: 'Missing required fields: name, category, price, image' });
-    }
-    if (!allowedCategories.includes(category)) {
-      return res.status(400).json({ error: 'Invalid category. Allowed: shop, passport, id-card' });
     }
     cloudinary.uploader.upload_stream({ resource_type: 'image' }, async (error, result) => {
       if (error || !result) {
