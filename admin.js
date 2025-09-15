@@ -358,7 +358,7 @@ class AdminPanel {
 
    async loadOrders() {
     try {
-        const res = await fetch('https://correct-backend-gu05.onrender.com/orders');
+        const res = await fetch('https://trustcards.onrender.com//orders');
         if (!res.ok) throw new Error('Failed to load orders');
         this.orders = await res.json();
         this.renderOrders();
@@ -607,4 +607,5 @@ const notificationStyles = `
 const styleSheet = document.createElement('style');
 styleSheet.textContent = notificationStyles;
 document.head.appendChild(styleSheet);
+
 
